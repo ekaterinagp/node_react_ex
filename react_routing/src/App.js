@@ -22,7 +22,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // this.IconsGreeting();
     if (localStorage) {
       let user = JSON.parse(localStorage.getItem("user"));
       if (user) {
@@ -87,52 +86,6 @@ class App extends Component {
       this.IconsGreeting(dataFromChild);
     }
   };
-  // if (
-  //   this.state.firstName === dataFromChild.firstName &&
-  //   this.state.lastName === dataFromChild.lastName
-  // ) {
-  //   console.log("same data!");
-  // this.IconsGreeting();
-  // return (
-  //   <h3>
-  //     {" "}
-  //     Welcome back {this.state.firstName} <FaBeer />{" "}
-  //   </h3>
-  // );
-  //   const newWelcomeMessage = `Welcome back ${this.state.firstName}`;
-  //   await this.setState({
-  //     welcomeMessage: newWelcomeMessage
-  //   });
-  // } else {
-  // console.log("before setting state", this.state);
-  //     await this.setState({
-  //       firstName: dataFromChild.firstName,
-  //       lastName: dataFromChild.lastName
-  //     });
-  //     const user = {
-  //       firstName: this.state.firstName,
-  //       lastName: this.state.lastName
-  //     };
-  //     localStorage.setItem("user", JSON.stringify(user));
-  //     console.log("after setting state", this.state);
-  //     // return (
-  //     //   <h3>
-  //     //     {" "}
-  //     //     Welcome {this.state.firstName} <WiMoonAltNew />{" "}
-  //     //   </h3>
-  //     // );
-  //     const newMessage = `Welcome ${this.state.firstName}`;
-  //     await this.setState({
-  //       welcomeMessage: newMessage
-  //     });
-  //   }
-  // };
-
-  // greetingsChange = () => {
-  //   {
-  //     return{{`Welcome back ${this.state.firstName}`}}
-  //   }
-  // };
 
   onColorChange = colorFromChild => {
     console.log(colorFromChild);
