@@ -33,7 +33,7 @@ class App extends Component {
     }
   }
 
-  IconsGreeting = async dataFromChild => {
+  iconsGreeting = async dataFromChild => {
     console.log("it is inside greetings");
     if (
       this.state.firstName === dataFromChild.firstName &&
@@ -55,7 +55,31 @@ class App extends Component {
     }
   };
 
+  // GreetingsAgain = () => {
+  //   if (localStorage.hasOwnProperty("user")) {
+  //     return (
+  //       <p>
+  //         {" "}
+  //         Welcome back {this.state.firstName} <FaBeer />{" "}
+  //       </p>
+  //     );
+  //   } else if (this.state.firstName) {
+  //     return (
+  //       <p>
+  //         {" "}
+  //         Welcome {this.state.firstName} <WiMoonAltNew />{" "}
+  //       </p>
+  //     );
+  //   } else {
+  //     return <p> Hello deer! </p>;
+  //   }
+  // };
+
   GreetingsAgain = () => {
+    if (!localStorage.hasOwnProperty("user") && !this.state.firstName) {
+      return <p> Hello deer! </p>;
+    }
+
     if (localStorage.hasOwnProperty("user")) {
       return (
         <p>
@@ -63,28 +87,26 @@ class App extends Component {
           Welcome back {this.state.firstName} <FaBeer />{" "}
         </p>
       );
-    } else if (this.state.firstName) {
-      return (
-        <p>
-          {" "}
-          Welcome {this.state.firstName} <WiMoonAltNew />{" "}
-        </p>
-      );
-    } else {
-      return <p> Hello deer! </p>;
     }
+
+    return (
+      <p>
+        {" "}
+        Welcome {this.state.firstName} <WiMoonAltNew />{" "}
+      </p>
+    );
   };
 
   handlerSubmitData = async dataFromChild => {
     console.log(dataFromChild);
-    dataFromChild = {
-      firstName: dataFromChild.firstName,
-      lastName: dataFromChild.lastName
-    };
-    console.log(dataFromChild);
-    if (dataFromChild) {
-      this.IconsGreeting(dataFromChild);
-    }
+    // dataFromChild = {
+    //   firstName: dataFromChild.firstName,
+    //   lastName: dataFromChild.lastName
+    // };
+    // console.log(dataFromChild);
+    // if (dataFromChild) {
+    this.iconsGreeting(dataFromChild);
+    // }
   };
 
   onColorChange = colorFromChild => {
