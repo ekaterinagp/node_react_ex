@@ -1,0 +1,19 @@
+.App {
+  text-align: center;
+}
+nav{
+  position: sticky;
+  top:0;
+  left:0;
+  right:0;
+  padding:1%;
+  border-bottom: 1px solid rosybrown;
+}
+li{
+  list-style-type: none;
+  display: inline-block;
+  margin:0 2%;
+}
+
+
+
