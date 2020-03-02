@@ -9,13 +9,14 @@ import Theme from "./pages/theme/Theme";
 import Form from "./pages/form/Form";
 import { FaBeer } from "react-icons/fa";
 import { WiMoonAltNew } from "react-icons/wi";
+import Cities from "./pages/cities/Cities";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       color: undefined,
-      // welcomeMessage: "Hello deer",
+
       firstName: "",
       lastName: ""
     };
@@ -54,26 +55,6 @@ class App extends Component {
       this.GreetingsAgain();
     }
   };
-
-  // GreetingsAgain = () => {
-  //   if (localStorage.hasOwnProperty("user")) {
-  //     return (
-  //       <p>
-  //         {" "}
-  //         Welcome back {this.state.firstName} <FaBeer />{" "}
-  //       </p>
-  //     );
-  //   } else if (this.state.firstName) {
-  //     return (
-  //       <p>
-  //         {" "}
-  //         Welcome {this.state.firstName} <WiMoonAltNew />{" "}
-  //       </p>
-  //     );
-  //   } else {
-  //     return <p> Hello deer! </p>;
-  //   }
-  // };
 
   GreetingsAgain = () => {
     if (!localStorage.hasOwnProperty("user") && !this.state.firstName) {
@@ -142,6 +123,9 @@ class App extends Component {
                 <li>
                   <Link to="/form">Form</Link>
                 </li>
+                <li>
+                  <Link to="/cities">Cities</Link>
+                </li>
               </ul>
             </nav>
 
@@ -179,6 +163,10 @@ class App extends Component {
                     setSubmitFromChild={this.handlerSubmitData}
                   />
                 )}
+              />
+              <Route
+                path="/cities"
+                component={props => <Cities {...props} />}
               />
             </Switch>
           </div>
