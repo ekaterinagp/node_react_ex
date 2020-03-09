@@ -1,18 +1,47 @@
 const express = require("express");
 const app = express();
+// const bodyParser = require("body-parser");
+app.use(express.json());
 
+app.use(express.urlencoded({ extended: true }));
 //adding return to res.send helps avoiding server from crashing
 const port = 3000;
 
-app.get("/", (req, res) => {
-  res.send("up and running");
+const arrItems = [
+  { id: 1, name: "A" },
+  { id: 2, name: "B" },
+  { id: 3, name: "C" },
+  { id: 4, name: "D" }
+];
+
+app.get("items/:id", (req, res) => {
+  // res.send("up and running");
+  const id = req.params.id;
+  arrItems.forEach(item => {
+    if (item.id == id) {
+      return res.send(item);
+    }
+  });
 });
 
-// app.get("/pathvariable/:customvalue/:multiple", (req, res) => {
-//   console.log(req.params);
-//   const customvalue = req.params.customvalue;
-//   res.send({});
+app.get("/items", (req, res) => {
+  res.send(arrItems);
+});
+
+// app.use(function(req, res, next) {
+//   console.log("req.body", req.body); // populated!
+//   next();
 // });
+
+app.post("/items/create", (req, res) => {
+  console.log("Got body:", req.body);
+  let idNumber = arrItems[arrItems.length - 1].id;
+  // console.log(arrItems.last());
+  let item = { id: idNumber + 1, name: req.body.name };
+
+  arrItems.push(item);
+  res.send({ status: "1", item });
+});
 
 app.get("/time/currenttime", (req, res) => {
   let d = new Date();
