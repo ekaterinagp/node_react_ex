@@ -5,7 +5,8 @@ exports.up = function(knex) {
       table.string("username");
       table.string("first_name");
       table.string("last_name");
-      // table.string("address");
+      table.string("password");
+      table.boolean("is_admin");
       table.timestamp("created_at").defaultTo(knex.fn.now());
     })
     .createTable("addresses", table => {
