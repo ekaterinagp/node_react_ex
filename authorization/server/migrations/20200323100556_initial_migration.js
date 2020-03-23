@@ -27,6 +27,7 @@ exports.down = function(knex) {
   return knex.schema.dropTableIfExists("addresses").dropTableIfExists("users");
 };
 
+//cheat sheet
 // knex.schema.createTable('user', (table) => {
 //   table.increments('id')
 //   table.string('name')
