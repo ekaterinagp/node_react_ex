@@ -9,12 +9,16 @@
     "migrate:rollback": "knex migrate:rollback",
     "seed:make": "knex seed:make",
     "seed:run": "knex seed:run",
+    "start-dev": "cross-env PORT=9090 nodemon app.js",
+    "start-prod": "node app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.1",
     "knex": "^0.20.13",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "objection": "^2.1.3"
   }
 }
