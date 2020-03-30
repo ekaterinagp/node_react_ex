@@ -8,26 +8,23 @@ exports.seed = function(knex) {
     .then(function() {
       // Inserts seed entries
       return knex("users").insert([
+        // password
         {
           username: "admin",
-          first_name: "A",
-          last_name: "BABA",
-          password: "1234567",
-          is_admin: true
+          first_name: "",
+          password:
+            "$2b$10$G/v/MRwgMgOAtCUCQRKJTO8GRD/rKxyu61J5wfYimsHd0/FSxuVAq"
         },
         {
-          username: "Poweruser",
-          first_name: "B",
-          last_name: "AAA",
-          password: "1111111",
-          is_admin: false
+          username: "poweruser",
+          password:
+            "$2b$10$G/v/MRwgMgOAtCUCQRKJTO8GRD/rKxyu61J5wfYimsHd0/FSxuVAq"
         }
-        // { id: 3, colName: "rowValue3" }
       ]);
     })
-    .then(userID => {
+    .then(userId => {
       return knex("addresses").insert([
-        { user_id: userID[0], address_1: "Some randome street 12" }
+        { user_id: userId[0], address_1: "Something street 12" }
       ]);
     });
 };

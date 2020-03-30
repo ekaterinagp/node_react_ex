@@ -1,9 +1,10 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 9090;
+// const bodyParser = require("body-parser");
 
-app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 //setup database
 
@@ -19,10 +20,12 @@ Model.knex(knex);
 
 //end database
 
-app.get("/", async (req, res) => {
-  const addresses = await knex.select().from("addresses");
-  return res.send({ addresses });
-});
+const usersRouter = require("./routes/users.js");
+app.use(usersRouter);
+// const User = require("./models/User.js");
+// app.get("/", async (req, res) => {
+//   return res.send({ result: await User.query() });
+// });
 
 const server = app.listen(port, error => {
   if (error) {

@@ -1,7 +1,7 @@
 const { Model } = require("objection");
 
 class User extends Model {
-  static get tabelName() {
+  static get tableName() {
     return "users";
   }
 }
