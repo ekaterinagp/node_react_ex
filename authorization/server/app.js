@@ -19,6 +19,21 @@ const knex = Knex(knexfile.development);
 Model.knex(knex);
 
 //end database
+//limit the amount of requests on auth route
+const rateLimit = require("express-rate-limit");
+
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 4, // limit each IP to 4 requests per windowMs
+});
+
+app.use("/users/login", authLimiter);
+app.use("/users/register", authLimiter);
+
+//todo create a playround route and incluse it as a first route
+
+const playgroundRouter = require("./routes/playground.js");
+app.use(playgroundRouter);
 
 const usersRouter = require("./routes/users.js");
 app.use(usersRouter);
@@ -27,7 +42,7 @@ app.use(usersRouter);
 //   return res.send({ result: await User.query() });
 // });
 
-const server = app.listen(port, error => {
+const server = app.listen(port, (error) => {
   if (error) {
     console.log("Error running express", error);
   }
